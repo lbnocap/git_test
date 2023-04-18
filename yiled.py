@@ -8,9 +8,10 @@ def fibonacci(n,w=0):
         a,b=b,a+b
         print("%d,%d"%(a,b ))
         counter+=1
-f=fibonacci(10,0)
-while True:
+'''f=fibonacci(10,0)'''
+'''while True:f
     try:
         print(next(f),end=" ")
     except:
         sys.exit()
+'''
