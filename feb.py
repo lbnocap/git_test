@@ -1,13 +1,26 @@
 class people:
-    name=""
-    age=0
+    _name=""
+    _age=0
     _weight=0
     def __init__(self,n,a,w):
-        self.name=n
-        self.age=a
+        self._name=n
+        self._age=a
         self._weight=w
     def speak(self):
         print("{} 说 我今年{}岁了".format(self.name,self.age))
+    @property
+    def name(self):
+        return self._name
+    @property
+    def age(self):
+        return self._age
+    @property
+    def weight(self):
+        return self._weight
+    @age.setter
+    def age(self,age):
+        self._age=age
+    
 class student(people):
     grade=""
     def __init__(self,n,a,w,g):
@@ -29,7 +42,7 @@ class sample(student,speaker):
         speaker.__init__(self,n,a,w,t)
         self.__f=f
     def speak(self):
-        print("我是{} 我今年{}岁了读{}年级了，演讲的主题是{}".format(self.name, self.age, self.grade,self.topic))
+        print("我是{} 我今年{}岁了读{}年级了，演讲的主题是{}".format(self._name, self._age, self.grade,self.topic))
     def __foo(self):
         print("这是私有方法")
     def fool(self):
@@ -41,5 +54,7 @@ class sample(student,speaker):
 
 test=sample("liubp",26,10,10,'python','siyou')
 test_1=sample("liubo",20,20,20,'java','共有')
+test.age=22
+print(test.age)
 test.speak()
-print(test+test_1)
+print(test+test_1)  

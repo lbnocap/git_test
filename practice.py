@@ -19,7 +19,7 @@ else:
     print("exit")
 lower=int(input("请输入一个最小值:")) #阿姆斯特朗数练习
 upper=int(input("请输入一个最大值:"))
-for num in range(lower,upper+1):
+for num in range(lower,upper+1):0.000
   sum1=0
   temp=num
   n=len(str(num))
@@ -29,7 +29,7 @@ for num in range(lower,upper+1):
     temp=temp//10
   if sum1==num:
     print("{}is amusitelangshu".format(num))'''
-'''
+''' 
 def hcf(x,y):
     if x>y:
         smaller=y
@@ -49,7 +49,7 @@ with open("123.txt","wt") as out_file:
 with open("123.txt","r") as in_file:
     text=in_file.read()
 print(text)'''
-
+#约瑟夫生死游戏
 people={}
 for i in range(1,31):
     people[i]=1
@@ -67,15 +67,35 @@ while i<=31:
             continue
         else:
          index+=1
-         if index==7:
+         if index==9:
             people[i]=0
             index=0
-            print("{}号下船了".format(i))
+            #print("{}号下船了".format(i))
             j+=1
          else:
             i+=1
             continue
 
+
+people1=list(range(1,31))
+while len(people1)>15:
+    i=1
+    while i<9:
+        people1.append(people1.pop(0))
+        i+=1
+    print("{}号下船了".format(people1.pop(0)))
+
+#翻转指定的个数的元素
+def revser(arr,n,d):#从第N个元素开始翻转D个元素
+    arr1=arr[:n]
+    arr2=arr[n:n+d]
+    arr3=arr[n+d:]
+    arr2=list(reversed(arr2))
+    return arr1+arr2+arr3
+
+x=[1,2,3,4,5,6,7,8,9]
+y=revser(x, 2, 6)
+print(y)
 
         
               
