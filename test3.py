@@ -1,23 +1,32 @@
-#!/usr/bin/env python3
+class thing(object):
+    def __init__(self,name,price,weight):
+        self.name=name
+        self.price=price
+        self.weight=weight
 
-print('----欢迎使用BMI计算程序----')
-name=input('请键入您的姓名:')
-height=eval(input('请键入您的身高(m):'))
-weight=eval(input('请键入您的体重(kg):'))
-gender=input('请键入你的性别(F/M)')
-BMI=float(float(weight)/(float(height)**2))
-#公式
-if BMI<=18.4:
-    print('姓名:',name,'身体状态:偏瘦')
-elif BMI<=23.9:
-    print('姓名:',name,'身体状态:正常')
-elif BMI<=27.9:
-    print('姓名:',name,'身体状态:超重')
-elif BMI>=28:
-    print('姓名:',name,'身体状态:肥胖')
-import time;
-nowtime=(time.asctime(time.localtime(time.time())))
-if gender=='F':
-    print('感谢',name,'女士在',nowtime,'使用本程序,祝您身体健康!')
-if gender=='M':
-    print('感谢', name, '先生在', nowtime, '使用本程序,祝您身体健康!')
+    @property
+    def value(self):
+        return self.price/self.weight
+
+def input_thing():
+    print("输入物品信息")
+    name,price,weight=input("name"),input("price"),input("weight")
+    return name,int(price),int(weight)
+
+def main():
+    max_weight,num_of_things=int(input("请输入总重量")),int(input("请输入物品数量"))
+    all_thing=[]
+    for _  in range(num_of_things):
+        all_thing.append(thing(*input_thing()))
+    all_thing.sort(key=lambda x:x.value,reverse=True)
+    total_weight=0
+    total_price=0
+    for thing1 in all_thing:
+            if total_weight+thing1.weight<=max_weight:
+                print(f"小头拿走了{thing1.name}")
+                total_price+=thing1.price
+                total_weight+=thing1.weight
+    print(f"小偷一共偷了{total_price}美元")
+
+if __name__=="__main__":
+            main()

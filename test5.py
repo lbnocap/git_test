@@ -1,17 +1,15 @@
-print('二、数字猜谜游戏')
-print('数字猜谜游戏！')
+import heapq
 
-a = 1
-i = 0
-while a == 20:
-   a = int (input ('请输入你猜的数字：'))
-   i += 1
-   if a == 20:
-      if i<3:
-         print('真厉害，这么快就猜对了！')
-      else :
-         print('总算猜对了，恭喜恭喜！')
-   elif a < 20:
-      print('你猜的数字小了，不要灰心，继续努力！')
-   else :
-      print('你猜的数字大了，不要灰心，继续加油！')
+list1 = [34, 25, 12, 99, 87, 63, 58, 78, 88, 92]
+list2 = [
+    {'name': 'IBM', 'shares': 100, 'price': 91.1},
+    {'name': 'AAPL', 'shares': 50, 'price': 543.22},
+    {'name': 'FB', 'shares': 200, 'price': 21.09},
+    {'name': 'HPQ', 'shares': 35, 'price': 31.75},
+    {'name': 'YHOO', 'shares': 45, 'price': 16.35},
+    {'name': 'ACME', 'shares': 75, 'price': 115.65}
+]
+print(heapq.nlargest(3, list1))
+print(heapq.nsmallest(3, list1))
+print(heapq.nlargest(2, list2, key=lambda x: x['price']))
+print(heapq.nlargest(2, list2, key=lambda x: x['shares']))
